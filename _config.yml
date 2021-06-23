@@ -33,6 +33,12 @@ theme: jekyll-theme-tactile
 plugins:
   - jekyll-feed
 
+
+github:
+    zip_url: https://github.com/morganstanley/ComposeUI/archive/refs/heads/main.zip
+    tar_url: https://github.com/morganstanley/ComposeUI/archive/refs/heads/main.zip
+    public: true
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
