@@ -10,7 +10,7 @@ layout: default
 [![codecov](https://codecov.io/gh/MorganStanley/ComposeUI/branch/main/graph/badge.svg)](https://codecov.io/gh/MorganStanley/ComposeUI)
 [![GitHub Repo stars](https://img.shields.io/github/stars/morganstanley/ComposeUI?style=social)](https://github.com/morganstanley/ComposeUI)
 
-Feature gaps with respect to UI components, layout management, and subpar native hosting in other industry container solutions pointed to us investing in the creation of this standard container as an open desktop platform. It is to provide a hybrid solution that meets the needs of the diverse application catalogs as well as a compelling opensource alternative.
+Feature gaps with respect to UI components, layout management, and subpar native hosting in other industry container solutions pointed us to investing in the creation of this standard container as an open desktop platform. It will provide a hybrid solution that meets the needs of a diverse application catalog as well as a compelling opensource alternative.
 
 Usage
 -----
