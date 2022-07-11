@@ -15,7 +15,7 @@ namespace MorganStanley.ComposeUI.Common.Interfaces
     ///
     /// Summary:
     ///     Defines the priorities with which jobs can be invoked on a Avalonia.Threading.Dispatcher.
-public enum SyncPriority
+    public enum SyncPriority
     {
         ///
         /// Summary:

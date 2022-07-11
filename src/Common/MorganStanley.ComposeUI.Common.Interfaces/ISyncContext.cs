@@ -12,21 +12,23 @@
 namespace MorganStanley.ComposeUI.Common.Interfaces
 {
     /// <summary>
-    /// 
+    /// Interface for marshalling action and its arguments to an STA thread (in which the SyncContext object had 
+    /// been created)
     /// </summary>
     public interface ISyncContext
     {
         /// <summary>
-        /// 
+        /// Returns true if the current thread is the same as the STA thread we want to marshal the action to 
+        /// (no marshaling is needed), false otherwise.
         /// </summary>
         /// <returns></returns>
         bool CheckAccess();
 
         /// <summary>
-        /// 
+        /// performs the action within the STA thread
         /// </summary>
-        /// <param name="action"></param>
-        /// <param name="priority"></param>
+        /// <param name="action">Action to perform</param>
+        /// <param name="priority">Thread priority</param>
         void Post(Action action, SyncPriority priority = SyncPriority.Normal);
     }
 }
