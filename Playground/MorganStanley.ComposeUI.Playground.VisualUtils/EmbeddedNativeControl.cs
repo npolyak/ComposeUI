@@ -77,13 +77,22 @@ namespace MorganStanley.ComposeUI.Playground.VisualUtils
                 _process = process;
             }
 
+            private Window _rootWindow;
+
             protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
             {
-                Window rootWindow = e.Root as Window;
-
-                if (rootWindow != null)
+                if (_rootWindow != null)
                 {
-                    SetParent(WindowHandle, rootWindow.PlatformImpl.Handle.Handle);
+                    _rootWindow.Closed -= _rootWindow_Closed;
+                }
+
+                _rootWindow = e.Root as Window;
+
+                if (_rootWindow != null)
+                {
+                    _rootWindow.Closed += _rootWindow_Closed;
+
+                    SetParent(WindowHandle, _rootWindow.PlatformImpl.Handle.Handle);
 
                     long style = (long)GetWindowLongPtr(WindowHandle, (int)GWL_STYLE);
 
@@ -100,8 +109,18 @@ namespace MorganStanley.ComposeUI.Playground.VisualUtils
                 base.OnAttachedToVisualTree(e);
             }
 
+            private void _rootWindow_Closed(object sender, EventArgs e)
+            {
+                this.DestroyProcess();
+            }
+
             protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
             {
+                if (_rootWindow != null)
+                {
+                    _rootWindow.Closed -= _rootWindow_Closed;
+                }
+
                 base.OnDetachedFromVisualTree(e);
             }
 

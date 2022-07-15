@@ -20,7 +20,7 @@ See the License for the specific language governing permissions and limitations 
 		Background="White"
 		Foreground="Black"
         Title="Plugins Test"
-	    Width="600"
+	    Width="1500"
 	    Height="400">
 	<Window.Resources>
 		<np:DockManager x:Key="TheDockManager"/>
@@ -32,8 +32,10 @@ See the License for the specific language governing permissions and limitations 
 		<np:RootDockGroup np:DockAttachedProperties.TheDockManager="{StaticResource TheDockManager}">
 			<np:StackDockGroup TheOrientation="Horizontal">
 				<np:DockItem>
-					<ms:EmbeddedNativeControl x:Name="EmbeddedControl"
-											  ProcessExePath="Plugins/ApplicationPlugins/SimpleApplicationPlugin/SimpleApplicationPlugin.exe"/>
+					<ms:EmbeddedNativeControl ProcessExePath="Plugins/ApplicationPlugins/SimpleApplicationPlugin/SimpleApplicationPlugin.exe"/>
+				</np:DockItem>
+				<np:DockItem>
+					<ms:EmbeddedNativeControl ProcessExePath="Plugins/ApplicationPlugins/AnotherSimpleApplicationPlugin/AnotherSimpleApplicationPlugin.exe"/>
 				</np:DockItem>
 			</np:StackDockGroup>
 		</np:RootDockGroup>

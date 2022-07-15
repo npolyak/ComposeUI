@@ -41,6 +41,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApplicationPlugins", "Appli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleApplicationPlugin", "..\..\Playground\Plugins\ApplicationPlugins\SimpleApplicationPlugin\SimpleApplicationPlugin.csproj", "{AFD9024A-E66D-4D12-82A6-3B023449F0B4}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnotherSimpleApplicationPlugin", "..\..\Playground\Plugins\ApplicationPlugins\AnotherSimpleApplicationPlugin\AnotherSimpleApplicationPlugin.csproj", "{94B81A80-8460-4A65-8FBB-FD965D23B143}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{AFD9024A-E66D-4D12-82A6-3B023449F0B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFD9024A-E66D-4D12-82A6-3B023449F0B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFD9024A-E66D-4D12-82A6-3B023449F0B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94B81A80-8460-4A65-8FBB-FD965D23B143}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94B81A80-8460-4A65-8FBB-FD965D23B143}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94B81A80-8460-4A65-8FBB-FD965D23B143}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94B81A80-8460-4A65-8FBB-FD965D23B143}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -107,6 +113,7 @@ Global
 		{CDB0B36B-D97F-44B9-AB7C-13CAB544312A} = {713AD7B2-EB14-40B5-A49F-6447C3F5254A}
 		{9F2B2181-3D39-45B9-B492-B56950203275} = {713AD7B2-EB14-40B5-A49F-6447C3F5254A}
 		{AFD9024A-E66D-4D12-82A6-3B023449F0B4} = {9F2B2181-3D39-45B9-B492-B56950203275}
+		{94B81A80-8460-4A65-8FBB-FD965D23B143} = {9F2B2181-3D39-45B9-B492-B56950203275}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {98497725-4038-46B9-910E-2BADC6FDC7E4}

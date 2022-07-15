@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="xcopy &quot;$(OutDir)\$(AssemblyName).exe&quot; &quot;$(SolutionDir)\bin\$(Configuration)\net6.0\Plugins\ApplicationPlugins\$(ProjectName)\&quot; /R /Y /I" />
+		<Exec Command="xcopy &quot;$(OutDir)\*.dll&quot; &quot;$(SolutionDir)\bin\$(Configuration)\net6.0\Plugins\ApplicationPlugins\$(ProjectName)\&quot; /R /Y /I" />
+		<Exec Command="xcopy &quot;$(OutDir)\*.json&quot; &quot;$(SolutionDir)\bin\$(Configuration)\net6.0\Plugins\ApplicationPlugins\$(ProjectName)\&quot; /R /Y /I" />
+		<Exec Command="xcopy &quot;$(OutDir)\*.pdb&quot; &quot;$(SolutionDir)\bin\$(Configuration)\net6.0\Plugins\ApplicationPlugins\$(ProjectName)\&quot; /R /Y /I" />
+	</Target>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\MorganStanley.ComposeUI.Playground.VisualUtils\MorganStanley.ComposeUI.Playground.VisualUtils.csproj" />
+	</ItemGroup>
+
+</Project>
