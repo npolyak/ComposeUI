@@ -2,8 +2,10 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Presenters;
 using Avalonia.Platform;
+using NP.Utilities;
 using System;
 using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -90,6 +92,11 @@ namespace MorganStanley.ComposeUI.Playground.VisualUtils
                     SetWindowLongPtr(new HandleRef(null, WindowHandle), (int)GWL_STYLE, (IntPtr)style);
                 }
 
+                // force refreshing the handle
+                MethodInfo methodInfo = typeof(NativeControlHost).GetMethod("DestroyNativeControl", BindingFlags.Instance | BindingFlags.NonPublic);
+
+                methodInfo.Invoke(this, null);
+                //(this as NativeControlHost).CallMethodExtras("DestroyNativeControl", true, false);
                 base.OnAttachedToVisualTree(e);
             }
 
@@ -115,7 +122,7 @@ namespace MorganStanley.ComposeUI.Playground.VisualUtils
             {
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
-                    DestroyProcess();
+                    //DestroyProcess();
                 }
                 else
                 {
