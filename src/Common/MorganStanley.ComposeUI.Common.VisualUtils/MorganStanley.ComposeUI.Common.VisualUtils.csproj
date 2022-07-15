@@ -19,7 +19,7 @@ See the License for the specific language governing permissions and limitations 
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NP.Avalonia.Visuals" Version="1.0.24" />
+    <PackageReference Include="NP.Avalonia.Visuals" Version="1.0.25" />
   </ItemGroup>
 
   <ItemGroup>

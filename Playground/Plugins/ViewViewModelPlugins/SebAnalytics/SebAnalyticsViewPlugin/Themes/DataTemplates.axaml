@@ -1,0 +1,65 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:np="https://np.com/visuals"
+					xmlns:seb="https://sebastion.com/visuals"
+					xmlns:sebSvcUtils="clr-namespace:Sebastion.Core.SvcUtils;assembly=SebViewModelsCommon">
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceInclude Source="avares://SebViewsCommon/Themes/Geometries.axaml"/>
+	</ResourceDictionary.MergedDictionaries>
+
+	<DataTemplate x:Key="AnalyticsDataTemplate">
+		<DataGrid  x:Name="AnalyticsGrid"
+				   np:DataGridCollectionViewBehavior.ItemsSource="{Binding Path=AppInfos}"
+				   np:DataGridFilteringBehavior.RowDataType="{x:Type sebSvcUtils:AppInfo}"
+				   seb:DataGridHelper.CopyMenuItemString="Copy Selected Analytics Rows to Clipboard"
+				   Classes="WithColumnFilters"
+				   np:CallAction.TheEvent="{x:Static DataGrid.SelectionChangedEvent}"
+				   np:CallAction.MethodName="SelectAppInfo"
+				   np:CallAction.HasArg="True"
+				   np:CallAction.Arg1="{Binding Path=SelectedItem, RelativeSource={RelativeSource Self}}"
+				   np:DataGridFilteringBehavior.DataGridFilterTextBoxClasses="FilterTextBox"
+				   seb:SebastionAttachedProps.RowClasses="FireDataGridRowDoubleTapped RowStatus AddRowsCopyMenu">
+			<DataGrid.Styles>
+				<Style Selector="DataGridRow">
+					<!-- for some reason using attached properties as a binding source
+						 defined within a visual plugin on
+						 Row insertion due to the View Model collection change, results in an exception 
+						 So I am adding these Row classes manually -->
+					<Setter Property="np:ClassesBehavior.InsertClasses"
+							Value="FireDataGridRowDoubleTapped RowStatus AddRowsCopyMenu"/>
+				</Style>
+			</DataGrid.Styles>
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="FSN"
+									np:DataGridFilteringBehavior.FilterPropName="Fsn"
+									Binding="{Binding Fsn}"
+									Width="205"/>
+				<DataGridTextColumn Header="Name"
+									np:DataGridFilteringBehavior.FilterPropName="Name"
+									Binding="{Binding Name}"
+									Width="144" />
+				<DataGridTextColumn Header="Castle Version"
+									Binding="{Binding CastleVersion}"
+									np:DataGridFilteringBehavior.FilterPropName="CastleVersion"
+									Width="144" />
+				<DataGridTextColumn Header="Environment"
+									Binding="{Binding DeploymentEnv}"
+									np:DataGridFilteringBehavior.FilterPropName="DeploymentEnv"
+									Width="260"/>
+				<DataGridTextColumn Header="EON ID"
+									Binding="{Binding EonId}"
+									np:DataGridFilteringBehavior.FilterPropName="EonId"
+									Width="110"/>
+				<DataGridTextColumn Header="Status"
+									np:DataGridFilteringBehavior.FilterPropName="Status"
+									Binding="{Binding Status}"
+									Width="110"/>
+				<DataGridTextColumn Header="Last Updated"
+									np:DataGridFilteringBehavior.FilterPropName="UpdateTime"
+									Binding="{Binding UpdateTime}"
+									Width="144"/>
+			</DataGrid.Columns>
+		</DataGrid>
+	</DataTemplate>
+
+</ResourceDictionary>

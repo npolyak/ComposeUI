@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAppAccessInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <AppAccessInfo
+        Fsn="aaaaccr"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://aaaaccr.webfarm-dev.ms.com/aaaaccr#auth=spnego;env=dev;fsn=aaaaccr;fullname=wm-aaaaccr;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="aaabranchcheckwebapi"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://aaabranchcheckwebapi.webfarm-dev.ms.com/aaabranchcheckwebapi#auth=spnego;env=dev;fsn=aaabranchcheckwebapi;fullname=wm-aaabranchcheckwebapi;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="aaaextservice"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://cardschecksrvc.webfarm-dev.ms.com/cardschecksrvc/AAAExtService.svc#auth=spnego;env=dev;fsn=aaaextservice;fullname=wm-aaaextservice;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="aaaipservice"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="https://aaaipservice.webfarm-dev.ms.com/aaaipservice/AAAIPService.svc#auth=spnego;env=dev;fsn=aaaipservice;fullname=wm-aaaipservice;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="aaaipsvcint"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://aaaipservice-int.webfarm-dev.ms.com/aaaipservice#auth=spnego;env=dev;fsn=aaaipsvcint;fullname=wm-aaaipsvcint;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="aaaipsvcint-sv"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://dzwas1129.msad.ms.com:18805/aaaipservice#auth=spnego;env=dev;fsn=aaaipsvcint-sv;fullname=wm-aaaipsvcint-sv;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="aaaoaoservice"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://oaoapi.webfarm-dev.ms.com/oaoapi#auth=spnego;env=dev;fsn=aaaoaoservice;fullname=wm-aaaoaoservice;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="aaaodeligibilitywebapi"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://aaaodeligibilitywebapi.webfarm-dev.ms.com/aaaodeligibilitywebapi#auth=spnego;env=dev;fsn=aaaodeligibilitywebapi;fullname=wm-aaaodeligibilitywebapi;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="aaaordercardcheckapi"
+        EnvKind="Dev"
+        Env="dev-cicd-debitcards-msobcsaaa"
+        FullPath="http://aaaordercardcheckapi-debitcards-msobcsaaa-dev.ms.com/aaaordercardcheckapi#auth=spnego;env=dev-cicd-debitcards-msobcsaaa;fsn=aaaordercardcheckapi;fullname=wm-aaaordercardcheckapi;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="aaaordercardcheckapi"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://aaaordercardcheckapi.webfarm-dev.ms.com/aaaordercardcheckapi#auth=spnego;env=dev;fsn=aaaordercardcheckapi;fullname=wm-aaaordercardcheckapi;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="aaaservice"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://cardschecksrvc.webfarm-dev.ms.com/cardschecksrvc/AAAService.svc#auth=spnego;env=dev;fsn=aaaservice;fullname=wm-aaaservice;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="account"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://reportcenterservice.webfarm-dev.ms.com/reportcenterservice/Account.svc#auth=spnego;env=dev;fsn=account;fullname=wm-account;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="accountmanagement"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://mstsws.webfarm-dev.ms.com/accountmanagement/accountmanagement.svc#auth=spnego;env=dev;fsn=accountmanagement;fullname=wm-accountmanagement;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="accounttrackingservice"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://choiceselectsvc.webfarm-dev.ms.com/accounttrackingws/AccountTrackingService.svc#auth=spnego;env=dev;fsn=accounttrackingservice;fullname=wm-accounttrackingservice;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="acrservice"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://autoconcentratn-acrsvc.webfarm-dev.ms.com/acrsvc/acrservice.svc#auth=spnego;env=dev;fsn=acrservice;fullname=wm-acrservice;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="activityservice"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://ret-nti-svc.webfarm-dev.ms.com/ret-nti-svc/ActivityService.svc#auth=spnego;env=dev;fsn=activityservice;fullname=wm-activityservice;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="address"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://mstsws.webfarm-dev.ms.com/reports/Address.svc#auth=spnego;env=dev;fsn=address;fullname=wm-address;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="addressvalidationservice-aidt-sv"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://dzwas1129.msad.ms.com:18145/sbsecure/AddressValidationService/service/AddressValidationService#auth=spnego;env=dev;fsn=addressvalidationservice-aidt-sv;fullname=wm-addressvalidationservice-aidt-sv;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="addressvalidationservice-esa-mao-sv"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://dzwas1129.msad.ms.com:18284/sbsecure/AddressValidationService/service/AddressValidationService#auth=spnego;env=dev;fsn=addressvalidationservice-esa-mao-sv;fullname=wm-addressvalidationservice-esa-mao-sv;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-accountssvc"
+        EnvKind="Dev"
+        Env="dev-cicd-advisory-supervisioncore"
+        FullPath="https://dzwas1129.msad.ms.com:18323/advaccounts#auth=spnego;env=dev-cicd-advisory-supervisioncore;fsn=adv-accountssvc;fullname=wm-adv-accountssvc;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-accountssvc"
+        EnvKind="Dev"
+        Env="dev-cicd-advice-spc"
+        FullPath="http://wmadvisory-advaccounts-advice-spc-dev.ms.com/advaccounts#auth=spnego;env=dev-cicd-advice-spc;fsn=adv-accountssvc;fullname=wm-adv-accountssvc;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-accountssvc"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://wmadvisory-advaccounts.webfarm-dev.ms.com/advaccounts#auth=spnego;env=dev;fsn=adv-accountssvc;fullname=wm-adv-accountssvc;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-accountssvc-lite"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://wmadvisory-advaccounts.webfarm-dev.ms.com/advaccounts/v1/accounts/lite#auth=spnego;env=dev;fsn=adv-accountssvc-lite;fullname=wm-adv-accountssvc-lite;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-accountssvc-sv"
+        EnvKind="Dev"
+        Env="dev-cicd"
+        FullPath="http://dzwas1129.msad.ms.com:18061/advclients/#auth=spnego;env=dev-cicd;fsn=adv-accountssvc-sv;fullname=wm-adv-accountssvc-sv;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-archival"
+        EnvKind="Dev"
+        Env="dev-mso"
+        FullPath="http://advcommonsvc.webfarm-dev.ms.com/archivalsvc#auth=spnego;env=dev-mso;fsn=adv-archival;fullname=wm-adv-archival;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-archival"
+        EnvKind="Dev"
+        Env="dev-5"
+        FullPath="http://advcommonsvc.webfarm-dev.ms.com/archivalsvc#auth=spnego;env=dev-5;fsn=adv-archival;fullname=wm-adv-archival;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-archival"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://advcommonsvc.webfarm-dev.ms.com/archivalsvc#auth=spnego;env=dev;fsn=adv-archival;fullname=wm-adv-archival;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-clientssvc"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://wmadvisory-advclients.webfarm-dev.ms.com/advclients#auth=spnego;env=dev;fsn=adv-clientssvc;fullname=wm-adv-clientssvc;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-commonassetrollup"
+        EnvKind="Dev"
+        Env="dev-cicd-fptlifeview-fptlifeview"
+        FullPath="http://adv-commonassetrollup-fptlifeview-fptlifeview-dev.ms.com/adv-commonassetrollupsvc#auth=spnego;env=dev-cicd-fptlifeview-fptlifeview;fsn=adv-commonassetrollup;fullname=wm-adv-commonassetrollup;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-commonassetrollup"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://adv-commonassetrollup.webfarm-dev.ms.com/adv-commonassetrollupsvc#auth=spnego;env=dev;fsn=adv-commonassetrollup;fullname=wm-adv-commonassetrollup;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-excelutilsvc"
+        EnvKind="Dev"
+        Env="dev-cicd-advice-spc"
+        FullPath="http://wmadvisory-advexcelutil-advice-spc-dev.ms.com/advexcelutil#auth=spnego;env=dev-cicd-advice-spc;fsn=adv-excelutilsvc;fullname=wm-adv-excelutilsvc;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-excelutilsvc"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://wmadvisory-advexcelutil.webfarm-dev.ms.com/advexcelutil#auth=spnego;env=dev;fsn=adv-excelutilsvc;fullname=wm-adv-excelutilsvc;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-fassvc"
+        EnvKind="Dev"
+        Env="dev-cicd-advice-spc"
+        FullPath="http://wmadvisory-advfa.webfarm-dev.ms.com/advfa#auth=spnego;env=dev-cicd-advice-spc;fsn=adv-fassvc;fullname=wm-adv-fassvc;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-fassvc"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://wmadvisory-advfa.webfarm-dev.ms.com/advfa#auth=spnego;env=dev;fsn=adv-fassvc;fullname=wm-adv-fassvc;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-guidelinesvc"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://advcommonsvc.webfarm-dev.ms.com/guidelinesvc#auth=spnego;env=dev;fsn=adv-guidelinesvc;fullname=wm-adv-guidelinesvc;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-holdings"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://wmadvisory-advholdings.webfarm-dev.ms.com/advholdings#auth=spnego;env=dev;fsn=adv-holdings;fullname=wm-adv-holdings;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-investmentsvc"
+        EnvKind="Dev"
+        Env="dev-cicd-advice-spc"
+        FullPath="http://wmadvisory-advinvestments-advice-spc-dev.ms.com/advinvestments#auth=spnego;env=dev-cicd-advice-spc;fsn=adv-investmentsvc;fullname=wm-adv-investmentsvc;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-investmentsvc"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="http://wmadvisory-advinvestments.webfarm-dev.ms.com/advinvestments#auth=spnego;env=dev;fsn=adv-investmentsvc;fullname=wm-adv-investmentsvc;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+    <AppAccessInfo
+        Fsn="adv-investmentsvc-ssl"
+        EnvKind="Dev"
+        Env="dev"
+        FullPath="https://wmadvisory-advinvestments.webfarm-dev.ms.com/advinvestments#auth=spnego;env=dev;fsn=adv-investmentsvc-ssl;fullname=wm-adv-investmentsvc-ssl;meta=wm;realm=MSAD.MS.COM;source=slr;type=bulk" />
+</ArrayOfAppAccessInfo>

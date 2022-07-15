@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+	
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+  	<Exec Command="xcopy &quot;$(OutDir)\$(AssemblyName).dll&quot; &quot;$(SolutionDir)\bin\$(Configuration)\net6.0\Plugins\ViewModelPlugins\$(ProjectName)\&quot; /R /Y /I" />
+  	<Exec Command="xcopy &quot;$(OutDir)\$(AssemblyName).pdb&quot; &quot;$(SolutionDir)\bin\$(Configuration)\net6.0\Plugins\ViewModelPlugins\$(ProjectName)\&quot; /R /Y /I" />
+	<Exec Command="xcopy &quot;$(OutDir)\*.xml&quot; &quot;$(SolutionDir)\bin\$(Configuration)\net6.0\Plugins\ViewModelPlugins\$(ProjectName)\&quot; /R /Y /I" />
+  </Target>
+	
+  <ItemGroup>
+    <None Remove="DevAccessInfo.xml" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Content Include="DevAccessInfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="MorganStanley.Castle" Version="6.6.5" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\MorganStanley.ComposeUI.Playground.Interfaces\MorganStanley.ComposeUI.Playground.Interfaces.csproj" />
+    <ProjectReference Include="..\..\..\..\SebAnalyticsCommon\SebViewModelsCommon.csproj" />
+  </ItemGroup>
+
+</Project>

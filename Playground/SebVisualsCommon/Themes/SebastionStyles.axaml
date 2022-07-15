@@ -1,0 +1,277 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:seb="https://sebastion.com/visuals"
+		xmlns:np="https://np.com/visuals">
+	<Styles.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceInclude Source="avares://SebVisualsCommon/Themes/Geometries.axaml"/>
+				<ResourceInclude Source="avares://SebVisualsCommon/Themes/ThemeResources.axaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Styles.Resources>
+	<Style Selector="TextBlock">
+		<Setter Property="HorizontalAlignment"
+				Value="Left"/>
+		<Setter Property="VerticalAlignment"
+				Value="Center"/>
+		<Setter Property="FontFamily"
+				Value="Microsoft YaHei UI"/>
+		<Setter Property="Foreground"
+				Value="{StaticResource ForegroundBrush}"/>
+	</Style>
+
+	<Style Selector="TextBlock.IncreasedText">
+		<Setter Property="FontSize"
+				Value="13"/>
+	</Style>
+	
+	<Style Selector="TextBlock.EnvsText">
+		<Setter Property="Margin"
+				Value="0,4,0,0"/>
+	</Style>
+	
+	<Style Selector="TextBlock.SebastionWindowTitle">
+		<Setter Property="FontFamily"
+				Value="Microsoft YaHei UI"/>
+		<Setter Property="FontSize"
+				Value="22"/>
+		<Setter Property="Foreground"
+				Value="{StaticResource ForegroundBrush}"/>
+	</Style>
+
+	<Style Selector="Button.SebastionWindowButton">
+		<Setter Property="FontFamily"
+				Value="Microsoft YaHei UI"/>
+		<Setter Property="FontSize"
+				Value="22"/>
+		<Setter Property="Foreground"
+				Value="{StaticResource ForegroundBrush}"/>
+	</Style>
+	<Style Selector="Path.SebastionMenuIcon">
+		<Setter Property="Fill"
+				Value="{StaticResource ForegroundBrush}"/>
+	</Style>
+	<Style Selector="TextBlock.Bold">
+		<Setter Property="FontWeight"
+				Value="Bold"/>
+	</Style>
+	<Style Selector="TextBlock.HeadingOne">
+		<Setter Property="FontWeight"
+				Value="Bold"/>
+		<Setter Property="FontSize"
+				Value="18"/>
+		<Setter Property="Margin"
+				Value="0,0,0,3"/>
+	</Style>
+
+	<Style Selector="TextBlock.Light">
+		<Setter Property="FontFamily"
+				Value="Microsoft YaHei Light"/>
+	</Style>
+
+
+	<Style Selector="DataGrid">
+		<Setter Property="FontSize"
+				Value="11"/>
+		<Setter Property="Background"
+				Value="{x:Null}"/>
+		<!--<Setter Property="Background"
+				Value="{StaticResource SubPanelColor}"/>-->
+		<Setter Property="RowBackground"
+				Value="Transparent"/>
+		<Setter Property="AlternatingRowBackground"
+				Value="Transparent"/>
+		<Setter Property="VerticalGridLinesBrush"
+				Value="#45474F"/>
+		<Setter Property="HorizontalGridLinesBrush"
+				Value="#45474F"/>
+		<Setter Property="HeadersVisibility"
+				Value="Column"/>
+		<Setter Property="IsReadOnly"
+				Value="True"/>
+		<Setter Property="AutoGenerateColumns"
+				Value="False"/>
+		<Setter Property="BorderBrush"
+				Value="#FF688CAF"/>
+		<Setter Property="BorderThickness"
+				Value="1"/>
+		<Setter Property="RowHeight"
+				Value="17"/>
+		<Setter Property="GridLinesVisibility"
+				Value="All"/>
+		<Setter Property="CanUserReorderColumns"
+				Value="True"/>
+		<Setter Property="CanUserResizeColumns"
+				Value="True"/>
+		<Setter Property="CanUserSortColumns"
+				Value="True"/>
+	</Style>
+
+
+	<Style Selector="DataGridColumnHeader">
+		<Setter Property="Background"
+				Value="#FF52609C"/>
+		<Setter Property="MinHeight"
+				Value="30"/>
+		<Setter Property="FontSize"
+				Value="14"/>
+		<Setter Property="HorizontalContentAlignment"
+				Value="Center"/>
+	</Style>
+
+	<Style Selector="np|LabeledControl.NameValue">
+		<Setter Property="TextClasses"
+				Value="Light"/>
+		<Setter Property="ControlRow"
+				Value="0"/>
+		<Setter Property="ControlColumn"
+				Value="1"/>
+		<Setter Property="HorizontalTextAlignment"
+				Value="Right"/>
+		<Setter Property="VerticalTextAlignment"
+				Value="Bottom"/>
+		<Setter Property="HorizontalContainedControlAlignment"
+				Value="Left"/>
+		<Setter Property="VerticalContainedControlAlignment"
+				Value="Bottom"/>
+		<Setter Property="Margin"
+				Value="10,5,10,5"/>
+	</Style>
+
+	<Style Selector=":is(np|CustomWindow).SebastionWindowStyle">
+		<Setter Property="CustomHeaderIconMargin"
+				Value="10,10,4,10"/>
+		<Setter Property="HeaderBackground"
+				Value="{StaticResource WindowBackgroundBrush}"/>
+		<Setter Property="HeaderHeight"
+				Value="40"/>
+		<Setter Property="Width"
+				Value="1300"/>
+		<Setter Property="Height"
+				Value="900"/>
+		<Setter Property="Background"
+				Value="{StaticResource PanelBrush}"/>
+		<Setter Property="TitleClasses"
+				Value="DefaultWindowTitle SebastionWindowTitle"/>
+		<Setter Property="WindowButtonClasses"
+				Value="WindowIconButton IconButton"/>
+		<Setter Property="WindowButtonClasses"
+				Value="WindowIconButton IconButton SebastionWindowButton"/>
+		<Setter Property="MenuPathClasses"
+				Value="DefaultCustomWindowMenu SebastionMenuIcon"/>
+		<Setter Property="MenuForeground"
+				Value="{StaticResource ForegroundBrush}"/>
+	</Style>
+
+	<Style Selector="Button.StartWindowButton">
+		<Setter Property="Background"
+				Value="Transparent"/>
+		<Setter Property="Margin"
+				Value="10,0,0,0"/>
+		<Setter Property="VerticalAlignment"
+				Value="Center"/>
+		<Setter Property="np:CallAction.TheEvent"
+				Value="{x:Static Button.ClickEvent}"/>
+		<Setter Property="np:CallAction.MethodName"
+				Value="OpenWindow"/>
+		<Setter Property="FontSize"
+				Value="14"/>
+		<Setter Property="ContentTemplate">
+			<Setter.Value>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal"
+							   IsHitTestVisible="False">
+						<Image Source="{Binding Path=(seb:SebastionAttachedProps.Icon), 
+												RelativeSource={RelativeSource AncestorType=Button}}"
+							   Stretch="Fill"
+							   Height="20"
+							   VerticalAlignment="Center"/>
+						<TextBlock Text="{Binding Path=(seb:SebastionAttachedProps.ButtonText), 
+											      RelativeSource={RelativeSource AncestorType=Button}}"
+								   VerticalAlignment="Center"
+								   Foreground="{StaticResource AccentBrush}"/>
+					</StackPanel>
+				</DataTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style Selector="Button.SebIconButton">
+		<Setter Property="Foreground"
+				Value="{StaticResource AccentBrush}"/>
+		<Setter Property="np:AttachedProperties.MouseOverBrush"
+				Value="#3FC4E5F6"/>
+		<Setter Property="Margin"
+				Value="1"/>
+		<Setter Property="CornerRadius"
+				Value="3"/>
+		<Setter Property="Background"
+				Value="Transparent"/>
+		<Setter Property="BorderThickness"
+				Value="2"/>
+		<Setter Property="np:CallAction.TheEvent"
+				Value="{x:Static Button.ClickEvent}"/>
+		<Setter Property="Width"
+				Value="{Binding Path=Bounds.Height, RelativeSource={RelativeSource Self}}"/>
+		<Setter Property="np:ClassesBehavior.InsertClasses"
+				Value="IconButton"/>
+		<Setter Property="VerticalAlignment"
+				Value="Stretch"/>
+	</Style>
+
+	<Style Selector="seb|CustomWindowWithHome">
+		<Setter Property="HeaderContentTemplate">
+			<Setter.Value>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal"
+								HorizontalAlignment="Left"
+								np:HandleEventBehavior.TheEvent="{x:Static InputElement.DoubleTappedEvent}">
+						<Button Classes="StartWindowButton"
+								seb:SebastionAttachedProps.Icon="avares://SebVisualsCommon/Icons/HomeTransparent.png"
+								seb:SebastionAttachedProps.ButtonText="Dashboard"
+								DataContext="{Binding $parent[Window]}"
+								np:CallAction.MethodName="SwitchHome"/>
+					</StackPanel>
+				</DataTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style Selector="DataGridRow.RowStatus">
+		<Setter Property="Background"
+				Value="{Binding Status, Converter={StaticResource RowBackgroundConverter}}"/>
+	</Style>
+
+	<Style Selector="DataGridRow.FireDataGridRowDoubleTapped">
+		<Setter Property="np:EventBehavior.TheEvent"
+				Value="{x:Static InputElement.DoubleTappedEvent}"/>
+		<Setter Property="np:EventBehavior.EventToFire"
+				Value="{x:Static seb:SebastionAttachedProps.DataGridRowDoubleTappedEvent}"/>
+	</Style>
+
+	<Style Selector="DataGridRow.AddRowsCopyMenu"> 
+		<Setter Property="ContextFlyout">
+			<Setter.Value>
+				<MenuFlyout>
+					<MenuItem Header="{Binding $parent[DataGrid].CopyMenuItemString}"
+							  np:CallAction.TheEvent="{x:Static MenuItem.ClickEvent}"
+							  np:CallAction.StaticType="{x:Type seb:DataGridHelper}"
+							  np:CallAction.TargetObject="{Binding $parent[DataGrid]}"
+							  np:CallAction.HasArg="True"
+							  np:CallAction.Arg1="&#x0a;&#x0a;***********************************************************************************************&#x0a;"
+							  np:CallAction.MethodName="CopySelectedRowsToClipboard"/>
+				</MenuFlyout>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style Selector="TextBox.FilterTextBox">
+		<Setter Property="Foreground"
+				Value="White"/>
+	</Style>
+
+	<Style Selector="NumericUpDown /template/ TextBox#PART_TextBox">
+		<Setter Property="Foreground"
+				Value="White"/>
+	</Style>
+</Styles>

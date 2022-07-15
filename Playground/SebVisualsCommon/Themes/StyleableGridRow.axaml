@@ -1,0 +1,10 @@
+<Styles xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:np="https://np.com/visuals"
+					xmlns:seb="https://sebastion.com/visuals">
+	<Style Selector="DataGridRow">
+		<Setter Property="np:ClassesBehavior.InsertClasses"
+				Value="{Binding Path=(seb:SebastionAttachedProps.RowClasses), 
+								RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
+	</Style>
+</Styles>

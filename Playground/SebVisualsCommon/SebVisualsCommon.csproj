@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MorganStanley.ComposeUI.Playground.VisualUtils\MorganStanley.ComposeUI.Playground.VisualUtils.csproj" />
+    <ProjectReference Include="..\SebAnalyticsCommon\SebViewModelsCommon.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Themes\Geometries.axaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="Themes\RefreshDataIndicatorStyle.axaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="Themes\SebastionStyles.axaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="Themes\StyleableGridRow.axaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="Themes\ThemeResources.axaml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,39 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:seb="https://sebastion.com/visuals">
+	<!-- Add Resources Here -->
+	<Color x:Key="SubPanelColor">#FF252A40</Color>
+	<Color x:Key="PanelColor">#FF2E3349</Color>
+	<Color x:Key="WindowBackgroundColor">#FF181E36</Color>
+	<Color x:Key="AccentColor">#FF34B1FF</Color>
+	<Color x:Key="MouseOverAccentColor">#FFBEE6FD</Color>
+	<Color x:Key="PressedAccentColor">#FFC4E5F6</Color>
+	<Color x:Key="HeaderForegroundColor">#FFFBFBFB</Color>
+	<Color x:Key="ForegroundColor">#FFFFFFFF</Color>
+	<Color x:Key="ErrorColor">#4CEC7373</Color>
+
+	<SolidColorBrush x:Key="SubPanelBrush"
+					 Color="{StaticResource SubPanelColor}"/>
+	<SolidColorBrush x:Key="PanelBrush"
+					 Color="{StaticResource PanelColor}"/>
+	<SolidColorBrush x:Key="WindowBackgroundBrush"
+					 Color="{StaticResource WindowBackgroundColor}"/>
+	<SolidColorBrush x:Key="AccentBrush"
+					 Color="{StaticResource AccentColor}"/>
+	<SolidColorBrush x:Key="MouseOverAccentBrush"
+					 Color="{StaticResource MouseOverAccentColor}"/>
+	<SolidColorBrush x:Key="PressedAccentBrush"
+					 Color="{StaticResource PressedAccentColor}"/>
+	<SolidColorBrush x:Key="HeaderForegroundBrush"
+					 Color="{StaticResource HeaderForegroundColor}"/>
+	<SolidColorBrush x:Key="ForegroundBrush"
+					 Color="{StaticResource ForegroundColor}"/>
+	<SolidColorBrush x:Key="ErrorBrush"
+					 Color="{StaticResource ErrorColor}"/>
+
+	<seb:AppStatusToBrushConverter x:Key="RowBackgroundConverter"
+								   GoodVal="#4C10DB55"
+								   ErrorVal="{StaticResource ErrorBrush}"
+								   WarningVal="#4CE6E67C"
+								   UnavailableVal="#4CD4D4D4"/>
+</ResourceDictionary>

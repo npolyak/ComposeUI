@@ -1,0 +1,53 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:utils="clr-namespace:NP.Utilities.PluginUtils;assembly=NP.Utilities"
+		xmlns:basicServices="clr-namespace:NP.Utilities.BasicServices;assembly=NP.Utilities"
+		xmlns:np="https://np.com/visuals"
+		xmlns:local="clr-namespace:MorganStanley.ComposeUI.Prototypes.SebAnaylicsPluginPrototype"
+        x:Class="MorganStanley.ComposeUI.Prototypes.SebAnaylicsPluginPrototype.MainWindow"
+        Title="Plugins Test"
+		SizeToContent="Width"
+	    Height="800"
+		Background="Black">
+	<Window.Resources>
+		<np:DockManager x:Key="TheDockManager"/>
+	</Window.Resources>
+	<Grid ColumnDefinitions="Auto, Auto">
+		<np:RootDockGroup TheDockManager="{StaticResource TheDockManager}">
+			<np:StackDockGroup TheOrientation="Horizontal">
+				<np:DockItem Header="Analytics Grid"
+							 FloatingSize="1150, 700">
+					<np:PluginControl x:Name="SebAnalyticsPluginControl"
+									  TheContainer="{x:Static local:App.TheContainer}"
+									  Width="1150"
+									  HorizontalAlignment="Stretch"
+									  VerticalAlignment="Stretch">
+						<np:PluginControl.PluginInfo>
+							<utils:VisualPluginInfo ViewModelType="{x:Type utils:IPlugin}"
+													ViewModelKey="SebMainViewModel"
+													ViewDataTemplateResourcePath="avares://SebAnalyticsViewPlugin/Themes/DataTemplates.axaml"
+													ViewDataTemplateResourceKey="AnalyticsDataTemplate"/>
+						</np:PluginControl.PluginInfo>
+					</np:PluginControl>
+				</np:DockItem>
+				<np:DockItem Header="Details Grid"
+							 FloatingSize="900, 700">
+					<np:PluginControl x:Name="SebDetailsPluginControl"
+									  TheContainer="{x:Static local:App.TheContainer}"
+									  Width="900"
+									  HorizontalAlignment="Stretch"
+									  VerticalAlignment="Stretch"
+									  Grid.Column="1">
+						<np:PluginControl.PluginInfo>
+							<utils:VisualPluginInfo ViewModelType="{x:Type utils:IPlugin}"
+													ViewModelKey="SebMainViewModel"
+													ViewDataTemplateResourcePath="avares://SebDetailViewPlugin/Themes/DataTemplates.axaml"
+													ViewDataTemplateResourceKey="DetailedAppView"/>
+						</np:PluginControl.PluginInfo>
+					</np:PluginControl>
+				</np:DockItem>
+			</np:StackDockGroup>
+		</np:RootDockGroup>
+
+	</Grid>
+</Window>
