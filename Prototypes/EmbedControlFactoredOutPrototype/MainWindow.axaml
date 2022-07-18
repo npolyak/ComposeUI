@@ -31,10 +31,10 @@ See the License for the specific language governing permissions and limitations 
 
 		<np:RootDockGroup np:DockAttachedProperties.TheDockManager="{StaticResource TheDockManager}">
 			<np:StackDockGroup TheOrientation="Horizontal">
-				<np:DockItem>
+				<np:DockItem  Header="Simple App">
 					<ms:EmbeddedNativeControl ProcessExePath="Plugins/ApplicationPlugins/SimpleApplicationPlugin/SimpleApplicationPlugin.exe"/>
 				</np:DockItem>
-				<np:DockItem>
+				<np:DockItem Header="Another Simple App">
 					<ms:EmbeddedNativeControl ProcessExePath="Plugins/ApplicationPlugins/AnotherSimpleApplicationPlugin/AnotherSimpleApplicationPlugin.exe"/>
 				</np:DockItem>
 			</np:StackDockGroup>

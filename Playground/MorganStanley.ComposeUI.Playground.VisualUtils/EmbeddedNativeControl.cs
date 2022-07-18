@@ -75,6 +75,15 @@ namespace MorganStanley.ComposeUI.Playground.VisualUtils
             public NativeHost(Process process)
             {
                 _process = process;
+                _process.EnableRaisingEvents = true;
+
+                _process.Exited += OnProcessExited;
+            }
+
+            private void OnProcessExited(object sender, EventArgs e)
+            {
+                SetParent(WindowHandle, IntPtr.Zero);
+
             }
 
             private Window _rootWindow;
@@ -102,7 +111,9 @@ namespace MorganStanley.ComposeUI.Playground.VisualUtils
                 }
 
                 // force refreshing the handle
-                MethodInfo methodInfo = typeof(NativeControlHost).GetMethod("DestroyNativeControl", BindingFlags.Instance | BindingFlags.NonPublic);
+                MethodInfo methodInfo = 
+                    typeof(NativeControlHost)
+                        .GetMethod("DestroyNativeControl", BindingFlags.Instance | BindingFlags.NonPublic);
 
                 methodInfo.Invoke(this, null);
                 //(this as NativeControlHost).CallMethodExtras("DestroyNativeControl", true, false);

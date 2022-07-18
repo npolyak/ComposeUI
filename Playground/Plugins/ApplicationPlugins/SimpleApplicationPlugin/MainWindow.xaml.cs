@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace SimpleApplicationPlugin
@@ -17,11 +19,20 @@ namespace SimpleApplicationPlugin
             Left = -9999;
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             this.Loaded -= MainWindow_Loaded;
 
             Console.WriteLine("Initialized");
+
+            //await Task.Delay(30000);
+
+            //while (true)
+            //{
+            //    Thread.Sleep(10000);
+
+            //    await Task.Delay(1);
+            //}
         }
     }
 }

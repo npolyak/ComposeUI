@@ -7,6 +7,6 @@
 		<StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Default.xaml"/>
 		<StyleInclude Source="avares://NP.Avalonia.Visuals/Themes/CustomWindowStyles.axaml"/>
 		<StyleInclude Source="avares://NP.Avalonia.UniDock/Themes/DockStyles.axaml"/>
-		<!--<StyleInclude Source="avares://NP.Avalonia.Visuals/Themes/ThemeStyles.axaml"/>-->
+		<StyleInclude Source="avares://NP.Avalonia.Visuals/Themes/ThemeStyles.axaml"/>
 	</Application.Styles>
 </Application>
