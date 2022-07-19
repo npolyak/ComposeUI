@@ -10,6 +10,7 @@
 /// ********************************************************************************************************
 
 using Avalonia.Controls;
+using System;
 
 namespace EmbedControlFactoredOutPrototype
 {
@@ -18,6 +19,13 @@ namespace EmbedControlFactoredOutPrototype
         public MainWindow()
         {
             InitializeComponent();
+
+            this.Closed += MainWindow_Closed;
+        }
+
+        private void MainWindow_Closed(object? sender, System.EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
