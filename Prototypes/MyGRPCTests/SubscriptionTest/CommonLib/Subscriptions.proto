@@ -1,0 +1,55 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/any.proto";
+
+//option csharp_namespace = "MorganStanley.ComposeUI.Messaging";
+
+package subscriptions;
+
+enum Status
+{
+	OK = 0;
+	Error = 1;
+}
+
+service SubscriptionsService
+{
+	rpc Subscribe(SubscriptionRequest) returns (stream ReturnedSubscriptionItem) {}
+	rpc Publish(PublishRequest) returns (PublishReply) {}
+}
+
+message SubscriptionRequest
+{
+	google.protobuf.Timestamp dateTimeStamp = 1;
+	string topic = 2;
+	string plugin_id = 3;
+}
+
+message ReturnedSubscriptionItem
+{
+	google.protobuf.Timestamp dateTimeStamp = 1;
+	string topic = 2;
+    google.protobuf.Any message = 3;
+}
+
+message PublishRequest
+{
+	google.protobuf.Timestamp dateTimeStamp = 1;
+	string topic = 2;
+
+	google.protobuf.Any message = 3;
+}
+
+message PublishReply
+{
+	google.protobuf.Timestamp dateTimeStamp = 1;
+	string topic = 2;
+}
+
+message TestTopicMessage
+{
+	google.protobuf.Timestamp dateTimeStamp = 1;
+	string TheStr = 2;
+}
