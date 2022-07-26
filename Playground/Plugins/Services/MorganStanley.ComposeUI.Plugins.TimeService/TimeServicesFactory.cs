@@ -10,7 +10,7 @@
 /// ********************************************************************************************************
 
 using NP.Utilities.Attributes;
-using MorganStanley.ComposeUI.Playground.Interfaces;
+using MorganStanley.ComposeUI.Tryouts.Interfaces;
 using System.Reactive.Linq;
 
 namespace MorganStanley.ComposeUI.Plugins.TimeService

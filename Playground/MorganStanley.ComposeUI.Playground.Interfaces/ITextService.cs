@@ -9,7 +9,7 @@
 /// 
 /// ********************************************************************************************************
 
-namespace MorganStanley.ComposeUI.Playground.Interfaces
+namespace MorganStanley.ComposeUI.Tryouts.Interfaces
 {
     public interface ITextService
     {

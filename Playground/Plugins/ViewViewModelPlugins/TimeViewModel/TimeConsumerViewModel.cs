@@ -9,7 +9,7 @@
 /// 
 /// ********************************************************************************************************
 
-using MorganStanley.ComposeUI.Playground.Interfaces;
+using MorganStanley.ComposeUI.Tryouts.Interfaces;
 using NP.Utilities;
 using NP.Utilities.Attributes;
 using NP.Utilities.PluginUtils;
