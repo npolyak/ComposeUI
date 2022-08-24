@@ -16,7 +16,7 @@ namespace MorganStanley.ComposeUI.Tryouts.Plugins.Services.ModulesService;
 
 internal class WebpageModule : ModuleBase
 {
-    public WebpageModule(string name, string url) : base(name)
+    public WebpageModule(string name, string url, Guid instanceId) : base(name, instanceId)
     {
         _url = url;
     }
@@ -30,13 +30,13 @@ internal class WebpageModule : ModuleBase
 
     public override Task Launch()
     {
-        _lifecycleEvents.OnNext(LifecycleEvent.Started(new ProcessInfo(Name, UIType.Web, _url)));
+        _lifecycleEvents.OnNext(LifecycleEvent.Started(new ProcessInfo(Name, UIType.Web, _url), InstanceId));
         return Task.CompletedTask;
     }
 
     public override Task Teardown()
     {
-        _lifecycleEvents.OnNext(LifecycleEvent.Stopped(new ProcessInfo(Name, UIType.Web, _url)));
+        _lifecycleEvents.OnNext(LifecycleEvent.Stopped(new ProcessInfo(Name, UIType.Web, _url), InstanceId));
         return Task.CompletedTask;
     }
 }

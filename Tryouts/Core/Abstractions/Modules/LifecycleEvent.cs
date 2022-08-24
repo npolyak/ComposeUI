@@ -12,21 +12,29 @@ namespace MorganStanley.ComposeUI.Tryouts.Core.Abstractions.Modules;
 
 public sealed class LifecycleEvent
 {
-    private LifecycleEvent(ProcessInfo processInfo, string eventType, bool isExpected)
+    private LifecycleEvent
+    (
+        ProcessInfo processInfo, 
+        string eventType, 
+        bool isExpected,
+        Guid instanceId)
     {
         ProcessInfo = processInfo;
         EventType = eventType;
         IsExpected = isExpected;
+        InstanceId = instanceId;
     }
+
+    public Guid InstanceId { get; }
 
     public ProcessInfo ProcessInfo { get; }
     public string EventType { get; }
     public bool IsExpected { get; }
 
-    public static LifecycleEvent Stopped(ProcessInfo processInfo, bool expected = true) => new LifecycleEvent(processInfo: processInfo, eventType: LifecycleEventType.Stopped, isExpected: expected);
-    public static LifecycleEvent Started(ProcessInfo processInfo) => new LifecycleEvent(processInfo: processInfo, eventType: LifecycleEventType.Started, isExpected: true);
-    public static LifecycleEvent StoppingCanceled(ProcessInfo processInfo, bool expected) => new LifecycleEvent(processInfo: processInfo, eventType: LifecycleEventType.StoppingCanceled, isExpected: expected);
-    public static LifecycleEvent FailedToStart(ProcessInfo processInfo) => new LifecycleEvent(processInfo: processInfo, eventType: LifecycleEventType.FailedToStart, isExpected: false);
+    public static LifecycleEvent Stopped(ProcessInfo processInfo, Guid instanceId, bool expected = true) => new LifecycleEvent(processInfo: processInfo, eventType: LifecycleEventType.Stopped, isExpected: expected, instanceId: instanceId);
+    public static LifecycleEvent Started(ProcessInfo processInfo, Guid instanceId) => new LifecycleEvent(processInfo: processInfo, eventType: LifecycleEventType.Started, isExpected: true, instanceId: instanceId);
+    public static LifecycleEvent StoppingCanceled(ProcessInfo processInfo, Guid instanceId, bool expected) => new LifecycleEvent(processInfo: processInfo, eventType: LifecycleEventType.StoppingCanceled, isExpected: expected, instanceId: instanceId);
+    public static LifecycleEvent FailedToStart(ProcessInfo processInfo, Guid instanceId) => new LifecycleEvent(processInfo: processInfo, eventType: LifecycleEventType.FailedToStart, isExpected: false, instanceId: instanceId);
 }
 
 public static class LifecycleEventType

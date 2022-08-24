@@ -41,7 +41,7 @@ public class ModuleLoader : IModuleLoader
         IModule host;
         if (!_processes.TryGetValue(request.instanceId, out host))
         {
-            host = _moduleHostFactory.CreateModuleHost(manifest);
+            host = _moduleHostFactory.CreateModuleHost(manifest, request.instanceId);
             _processes.Add(request.instanceId, host);
             await host.Initialize();
             host.LifecycleEvents.Subscribe(ForwardLifecycleEvents);

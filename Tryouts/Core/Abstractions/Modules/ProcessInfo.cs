@@ -13,7 +13,7 @@ namespace MorganStanley.ComposeUI.Tryouts.Core.Abstractions.Modules;
 
 public class ProcessInfo
 {
-    public ProcessInfo(string name, string uiType, string? uiHint)
+    public ProcessInfo(string name, string uiType, string? uiHint = null)
     {
         Name = name;
         UiType = uiType;
@@ -35,5 +35,9 @@ public class ProcessInfo
     ///  - Web: URL to navigate
     ///  - Window: ProcessID of the process owning the main window
     /// </summary>
-    public string? UiHint { get; }
+    public string? UiHint 
+    { 
+        get; 
+        set; 
+    }
 }

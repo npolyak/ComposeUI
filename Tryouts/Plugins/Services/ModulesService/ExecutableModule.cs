@@ -28,7 +28,7 @@ internal class ExecutableModule : ModuleBase
         uiHint: _mainProcess?.Id.ToString()
     );
 
-    public ExecutableModule(string name, string launchPath) : base(name)
+    public ExecutableModule(string name, string launchPath, Guid instanceId) : base(name, instanceId)
     {
         _launchPath = launchPath;
     }
@@ -46,20 +46,20 @@ internal class ExecutableModule : ModuleBase
     public override Task Launch()
     {
         _mainProcess?.Start();
-        _lifecycleEvents.OnNext(LifecycleEvent.Started(ProcessInfo));
+        _lifecycleEvents.OnNext(LifecycleEvent.Started(ProcessInfo, InstanceId));
         return Task.CompletedTask;
     }
 
     private void ProcessExited(object? sender, EventArgs e)
     {
-        _lifecycleEvents.OnNext(LifecycleEvent.Stopped(ProcessInfo, exitRequested));
+        _lifecycleEvents.OnNext(LifecycleEvent.Stopped(ProcessInfo, InstanceId, exitRequested));
     }
 
     public async override Task Teardown()
     {
         if (_mainProcess == null)
         {
-            _lifecycleEvents.OnNext(LifecycleEvent.Stopped(ProcessInfo, true));
+            _lifecycleEvents.OnNext(LifecycleEvent.Stopped(ProcessInfo, InstanceId, true));
             return;
         }
         try
@@ -84,11 +84,11 @@ internal class ExecutableModule : ModuleBase
 
             if (_mainProcess.HasExited)
             {
-                _lifecycleEvents.OnNext(LifecycleEvent.Stopped(ProcessInfo, true));
+                _lifecycleEvents.OnNext(LifecycleEvent.Stopped(ProcessInfo, InstanceId, true));
             }
             else
             {
-                _lifecycleEvents.OnNext(LifecycleEvent.StoppingCanceled(ProcessInfo, false));
+                _lifecycleEvents.OnNext(LifecycleEvent.StoppingCanceled(ProcessInfo, InstanceId, false));
             }
         }
         finally
