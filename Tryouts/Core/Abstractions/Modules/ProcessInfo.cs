@@ -40,4 +40,17 @@ public class ProcessInfo
         get; 
         set; 
     }
+
+    long _processMainWindowHandle = 0;
+    public long ProcessMainWindowHandle 
+    {
+        get => _processMainWindowHandle;
+        set
+        {
+            if (_processMainWindowHandle == value)
+                return;
+
+            _processMainWindowHandle = value;
+        }
+    }
 }

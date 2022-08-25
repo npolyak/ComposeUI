@@ -21,16 +21,13 @@ internal class ExecutableModule : ModuleBase
     private Process? _mainProcess;
     private bool exitRequested = false;
 
-    public ProcessInfo ProcessInfo => new ProcessInfo
-    (
-        name: Name,
-        uiType: UIType.Window,
-        uiHint: _mainProcess?.Id.ToString()
-    );
+    public ProcessInfo ProcessInfo { get; }
 
     public ExecutableModule(string name, string launchPath, Guid instanceId) : base(name, instanceId)
     {
         _launchPath = launchPath;
+
+        ProcessInfo = new ProcessInfo(Name, UIType.Window);
     }
 
     public override Task Initialize()
@@ -43,11 +40,22 @@ internal class ExecutableModule : ModuleBase
         return Task.CompletedTask;
     }
 
-    public override Task Launch()
+    public override async Task Launch()
     {
-        _mainProcess?.Start();
+        _mainProcess!.Start();
+
+        while (((long)_mainProcess.MainWindowHandle) == 0)
+        {
+            await Task.Delay(1000);
+        };
+
+
+        long mainWindowHndl = (long)_mainProcess.MainWindowHandle;
+
+        ProcessInfo.UiHint = _mainProcess!.Id.ToString();
+        ProcessInfo.ProcessMainWindowHandle = mainWindowHndl;
+
         _lifecycleEvents.OnNext(LifecycleEvent.Started(ProcessInfo, InstanceId));
-        return Task.CompletedTask;
     }
 
     private void ProcessExited(object? sender, EventArgs e)

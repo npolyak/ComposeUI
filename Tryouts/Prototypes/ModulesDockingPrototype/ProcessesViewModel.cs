@@ -1,6 +1,8 @@
 ﻿using MorganStanley.ComposeUI.Tryouts.Core.Abstractions.Modules;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reactive.Linq;
+using System.Reactive.Concurrency;
 using NP.Concepts.Behaviors;
 using System;
 
@@ -14,6 +16,10 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
         IModuleLoader _moduleLoader;
 
         public ObservableCollection<SingleProcessViewModel> Processes { get; } =
+            new ObservableCollection<SingleProcessViewModel>();
+
+
+        public ObservableCollection<SingleProcessViewModel> ProcessesWithWindows { get; } =
             new ObservableCollection<SingleProcessViewModel>();
 
         private IDisposable _modulesBehavior;
@@ -81,10 +87,17 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
         private void OnProcessesAdded(SingleProcessViewModel process)
         {
             process.StopEvent += OnStopProcess;
+            process.StartedEvent += Process_StartedEvent;
+        }
+
+        private void Process_StartedEvent(SingleProcessViewModel process)
+        {
+            ProcessesWithWindows.Add(process);
         }
 
         private void OnProcessesRemoved(SingleProcessViewModel process)
         {
+            process.StartedEvent -= Process_StartedEvent;
             process.StopEvent -= OnStopProcess;
         }
 
@@ -100,7 +113,12 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
 
             Processes.Add(processViewModel);
 
-            _moduleLoader.RequestStartProcess(new LaunchRequest { name = moduleInfo.Name, instanceId = instanceId });
+            _moduleLoader.RequestStartProcess
+            (
+                new LaunchRequest 
+                { 
+                    name = moduleInfo.Name, 
+                    instanceId = instanceId });
         }
 
         private void OnStopProcess(SingleProcessViewModel process)

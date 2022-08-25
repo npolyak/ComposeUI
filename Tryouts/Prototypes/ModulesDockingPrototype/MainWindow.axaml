@@ -17,6 +17,7 @@ See the License for the specific language governing permissions and limitations 
 		xmlns:basicServices="clr-namespace:NP.Utilities.BasicServices;assembly=NP.Utilities"
 		xmlns:np="https://np.com/visuals"
 		xmlns:ms="https://ms.com/visuals"
+		np:DockAttachedProperties.TheDockManager="{DynamicResource TheDockManager}"
 		Background="White"
 		Foreground="Black"
         Title="Plugins Test"
@@ -40,7 +41,10 @@ See the License for the specific language governing permissions and limitations 
 	</Window.Styles>
 	<Window.Resources>
 		<np:DockManager x:Key="TheDockManager"/>
-		
+
+		<DataTemplate x:Key="EmbeddedWindowTemplate">
+			<ms:EmbeddedWindowBasedNativeControl WindowHandle="{Binding}"/>
+		</DataTemplate>
 	</Window.Resources>
 	<Grid x:Name="RootPanel"
 		  RowDefinitions="Auto, Auto, *"
@@ -153,6 +157,7 @@ See the License for the specific language governing permissions and limitations 
 		<np:RootDockGroup np:DockAttachedProperties.TheDockManager="{StaticResource TheDockManager}"
 						  Grid.Row="2">
 			<np:TabbedDockGroup x:Name="AppTabs" 
+								DockId="MainProcessesTab"
 								IsStableGroup="True">
 			</np:TabbedDockGroup>
 		</np:RootDockGroup>

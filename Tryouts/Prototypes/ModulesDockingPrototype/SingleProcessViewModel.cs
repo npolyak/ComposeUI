@@ -10,6 +10,8 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
 
         public event Action<SingleProcessViewModel>? StopEvent;
 
+        public event Action<SingleProcessViewModel> StartedEvent;
+
         public Guid InstanceId { get; }
 
         private bool _isRunning = false;
@@ -51,6 +53,7 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
                 processInfo.UiHint)
         {
             InstanceId = instanceId;
+            ProcessMainWindowHandle = processInfo.ProcessMainWindowHandle;
         }
 
         public void ReactToMessage(LifecycleEvent lifecycleEvent)
@@ -61,12 +64,16 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
                 return; // no change whatever it is
             }
 
-            IsRunning =
-                lifecycleEvent.EventType == LifecycleEventType.Started;
+            bool isStartedEvent = lifecycleEvent.EventType == LifecycleEventType.Started;
 
-            if (lifecycleEvent.ProcessInfo.UiHint == null && IsRunning)
+            IsRunning = isStartedEvent;
+
+            if (isStartedEvent)
             {
                 this.UiHint = lifecycleEvent.ProcessInfo.UiHint;
+                this.ProcessMainWindowHandle = lifecycleEvent.ProcessInfo.ProcessMainWindowHandle;
+
+                StartedEvent?.Invoke(this);
 
                 OnPropChanged(nameof(UiHint));
             }
