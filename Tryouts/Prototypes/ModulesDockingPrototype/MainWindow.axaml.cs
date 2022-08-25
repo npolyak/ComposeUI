@@ -59,43 +59,43 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
         {
             ++_newDockId;
 
-            Dispatcher.UIThread.Post(
-                () =>
-                {
-                    _appTabs.DockChildren.Add
-                    (
-                        new DockItem
-                        {
-                            DockId = _newDockId.ToString(),
-                            Header = $"{processViewModel.Name}_{_newDockId}",
-                            Content = new EmbeddedWindowBasedNativeControl { WindowHandle = processViewModel.ProcessMainWindowHandle },
-                            IsPredefined = false,
-                            IsSelected = true,
-                            IsActive = true,
-                        }
-                     );
-                });
-
             //Dispatcher.UIThread.Post(
             //    () =>
             //    {
-            //        _uniDockService.DockItemsViewModels.Add
+            //        _appTabs.DockChildren.Add
             //        (
-            //            new DockItemViewModelBase
+            //            new DockItem
             //            {
             //                DockId = _newDockId.ToString(),
             //                Header = $"{processViewModel.Name}_{_newDockId}",
-            //                DefaultDockGroupId = "MainProcessesTab",
-            //                DefaultDockOrderInGroup = _newDockId,
-            //                Content = processViewModel.ProcessMainWindowHandle,
-            //                ContentTemplateResourceKey= "EmbeddedWindowTemplate",
+            //                Content = new EmbeddedWindowBasedNativeControl { WindowHandle = processViewModel.ProcessMainWindowHandle },
+            //                IsPredefined = false,
             //                IsSelected = true,
             //                IsActive = true,
-            //                IsPredefined = false
             //            }
-            //        );
-            //    }
-            //);
+            //         );
+            //    });
+
+            Dispatcher.UIThread.Post(
+                () =>
+                {
+                    _uniDockService.DockItemsViewModels.Add
+                    (
+                        new DockItemViewModelBase
+                        {
+                            DockId = _newDockId.ToString(),
+                            Header = $"{processViewModel.Name}_{_newDockId}",
+                            DefaultDockGroupId = "MainProcessesTab",
+                            DefaultDockOrderInGroup = _newDockId,
+                            Content = processViewModel.ProcessMainWindowHandle,
+                            ContentTemplateResourceKey = "EmbeddedWindowTemplate",
+                            IsSelected = true,
+                            IsActive = true,
+                            IsPredefined = false
+                        }
+                    );
+                }
+            );
         }
 
         private void MainWindow_Closed(object? sender, System.EventArgs e)

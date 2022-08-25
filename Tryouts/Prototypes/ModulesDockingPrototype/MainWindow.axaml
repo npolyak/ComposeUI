@@ -43,7 +43,7 @@ See the License for the specific language governing permissions and limitations 
 		<np:DockManager x:Key="TheDockManager"/>
 
 		<DataTemplate x:Key="EmbeddedWindowTemplate">
-			<ms:EmbeddedWindowBasedNativeControl WindowHandle="{Binding}"/>
+			<ms:EmbeddedWindowBasedNativeControl WindowHandle="{Binding Mode=OneTime}"/>
 		</DataTemplate>
 	</Window.Resources>
 	<Grid x:Name="RootPanel"
