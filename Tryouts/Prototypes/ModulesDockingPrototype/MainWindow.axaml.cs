@@ -22,7 +22,7 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
 {
     public partial class MainWindow : Window
     {
-        ProcessesViewModel? _viewModel;
+        ProcessesViewModel _viewModel;
 
         IUniDockService _uniDockService;
 
@@ -30,6 +30,8 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
 
         private const string DockSerializationFileName = "DockSerialization.xml";
         private const string VMSerializationFileName = "DockVMSerialization.xml";
+
+        public SaveRestoreProcessDockLayoutBehavior ActionsBehavior { get; }
 
         public MainWindow()
         {
@@ -46,11 +48,21 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
 
             _viewModel = viewModel;
 
+            ActionsBehavior =
+                new SaveRestoreProcessDockLayoutBehavior
+                (
+                    _uniDockService,
+                    _viewModel,
+                    DockSerializationFileName,
+                    VMSerializationFileName,
+                    "MainProcessesTab",
+                    "EmbeddedWindowTemplate",
+                    "EmbeddedWindowHeaderTemplate"
+                );
+
             DataContext = _viewModel;
 
             this.Closed += MainWindow_Closed;
-
-            _viewModel.ProcessesWithWindows.AddBehavior(OnProcessAdded);
 
             SaveButton.Click += SaveButton_Click;
 
@@ -59,78 +71,13 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
 
         private void SaveButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            _uniDockService.SaveToFile(DockSerializationFileName);
-
-            _uniDockService.SaveViewModelsToFile(VMSerializationFileName);
+            ActionsBehavior.Save();
         }
 
         private void LoadButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            _uniDockService.RestoreFromFile(DockSerializationFileName, false);
-            _uniDockService.RestoreViewModelsFromFile(VMSerializationFileName, typeof(DockItemViewModel<ProcessData>));
-
-            _newDockId =
-                _uniDockService
-                    .DockItemsViewModels
-                    .Cast<DockItemViewModel<ProcessData>>()
-                    .Max(dockItemVm => dockItemVm.TheVM.WindowNumber);
-
-            foreach (DockItemViewModel<ProcessData> vm in _uniDockService.DockItemsViewModels)
-            {
-                string processName = vm.TheVM.ProcessName;
-
-                Guid instanceId = vm.TheVM.InstanceId;
-
-                _viewModel.LaunchProcess(processName, instanceId);
-            }
+            ActionsBehavior.Load();
         }
-
-        private void OnProcessAdded(SingleProcessViewModel processViewModel)
-        {
-            Guid instanceId = processViewModel.InstanceId;
-
-            Dispatcher.UIThread.Post(
-                () =>
-                {
-                    var existingVm = 
-                        _uniDockService
-                            .DockItemsViewModels
-                            .Cast<DockItemViewModel<ProcessData>>()
-                            .FirstOrDefault(dockItemVm => dockItemVm.TheVM.InstanceId == instanceId);
-
-                    if (existingVm != null)
-                    {
-                        existingVm.TheVM.ProcessMainWindowHandle = processViewModel.ProcessMainWindowHandle;
-                    }
-                    else
-                    {
-                        _newDockId++;
-                        var dockItemViewModel = new DockItemViewModel<ProcessData>
-                        {
-                            DockId = _newDockId.ToString(),
-                            Header = $"{processViewModel.ProcessName}_{_newDockId}",
-                            DefaultDockGroupId = "MainProcessesTab",
-                            DefaultDockOrderInGroup = _newDockId,
-                            ContentTemplateResourceKey = "EmbeddedWindowTemplate",
-                            HeaderContentTemplateResourceKey = "EmbeddedWindowHeaderTemplate",
-                            IsSelected = true,
-                            IsActive = true,
-                            IsPredefined = false,
-                        };
-
-                        dockItemViewModel.TheVM = new ProcessData
-                        {
-                            InstanceId = processViewModel.InstanceId,
-                            ProcessName = processViewModel.ProcessName,
-                            WindowNumber = _newDockId,
-                            ProcessMainWindowHandle = processViewModel.ProcessMainWindowHandle
-                        };
-                        _uniDockService!.DockItemsViewModels.Add(dockItemViewModel);
-                    }
-                }
-            );
-        }
-
 
         private void MainWindow_Closed(object? sender, System.EventArgs e)
         {

@@ -171,6 +171,7 @@ See the License for the specific language governing permissions and limitations 
 		</np:RootDockGroup>
 		<StackPanel Orientation="Horizontal"
 					HorizontalAlignment="Right"
+					Margin="0,10,0,0"
 					Grid.Row="3">
 			<Button Content="Save"
 					x:Name="SaveButton"
@@ -178,7 +179,8 @@ See the License for the specific language governing permissions and limitations 
 					Margin="0,0,10,0"/>
 			<Button Content="Load"
 					x:Name="LoadButton"
-					Padding="10,5"/>
+					Padding="10,5"
+					Margin="0"/>
 		</StackPanel>
 	</Grid>
 </Window>
