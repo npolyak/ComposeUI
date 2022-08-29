@@ -14,11 +14,15 @@ See the License for the specific language governing permissions and limitations 
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype.App">
 	<Application.Styles>
-		<StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseDark.xaml"/>
+		<StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseLight.xaml"/>
 		<StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"/>
 		<StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Default.xaml"/>
 		<StyleInclude Source="avares://NP.Avalonia.Visuals/Themes/CustomWindowStyles.axaml"/>
 		<StyleInclude Source="avares://NP.Avalonia.UniDock/Themes/DockStyles.axaml"/>
 		<StyleInclude Source="avares://NP.Avalonia.Visuals/Themes/ThemeStyles.axaml"/>
 	</Application.Styles>
+	<Application.Resources>
+		<SolidColorBrush x:Key="MostProminentBrush"
+						 Color="Black"/>
+	</Application.Resources>
 </Application>
