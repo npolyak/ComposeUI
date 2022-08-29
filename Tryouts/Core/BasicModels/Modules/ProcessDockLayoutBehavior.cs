@@ -133,7 +133,7 @@ namespace MorganStanley.ComposeUI.Tryouts.Core.BasicModels.Modules
                     .Cast<DockItemViewModel<ProcessData>>()
                     .FirstOrDefault(vm => vm.TheVM!.InstanceId == processViewModel.InstanceId);
 
-                var dockId = dockVm.DockId;
+                var dockId = dockVm!.DockId;
 
                 var group = _uniDockService.GetGroupByDockId(dockId);
 
