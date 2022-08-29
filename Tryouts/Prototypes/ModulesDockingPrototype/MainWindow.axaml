@@ -43,11 +43,19 @@ See the License for the specific language governing permissions and limitations 
 		<np:DockManager x:Key="TheDockManager"/>
 
 		<DataTemplate x:Key="EmbeddedWindowTemplate">
-			<ms:EmbeddedWindowBasedNativeControl WindowHandle="{Binding Mode=OneTime}"/>
+			<ms:EmbeddedWindowBasedNativeControl WindowHandle="{Binding Path=ProcessMainWindowHandle, Mode=OneTime}"/>
+		</DataTemplate>
+		<DataTemplate x:Key="EmbeddedWindowHeaderTemplate">
+			<StackPanel Orientation="Horizontal"
+						VerticalAlignment="Center">
+				<TextBlock Text="{Binding ProcessName}"/>
+				<TextBlock Text="{Binding WindowNumber}"
+						   Margin="10,0,0,0"/>
+			</StackPanel>
 		</DataTemplate>
 	</Window.Resources>
 	<Grid x:Name="RootPanel"
-		  RowDefinitions="Auto, Auto, *"
+		  RowDefinitions="Auto, Auto, *, Auto"
 		  Margin="10">
 		<np:LabeledControl Text="Modules:"
 						   TextClasses="SectionHeader"
@@ -161,5 +169,16 @@ See the License for the specific language governing permissions and limitations 
 								IsStableGroup="True">
 			</np:TabbedDockGroup>
 		</np:RootDockGroup>
+		<StackPanel Orientation="Horizontal"
+					HorizontalAlignment="Right"
+					Grid.Row="3">
+			<Button Content="Save"
+					x:Name="SaveButton"
+					Padding="10,5"
+					Margin="0,0,10,0"/>
+			<Button Content="Load"
+					x:Name="LoadButton"
+					Padding="10,5"/>
+		</StackPanel>
 	</Grid>
 </Window>

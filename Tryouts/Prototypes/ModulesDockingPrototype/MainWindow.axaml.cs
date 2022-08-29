@@ -17,6 +17,7 @@ using NP.Avalonia.UniDockService;
 using NP.Concepts.Behaviors;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
 {
@@ -24,11 +25,14 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
     {
         ProcessesViewModel? _viewModel;
 
-        IUniDockService? _uniDockService;
+        IUniDockService _uniDockService;
 
         int _newDockId = 0;
 
         TabbedDockGroup? _appTabs;
+
+        private const string DockSerializationFileName = "DockSerialization.xml";
+        private const string VMSerializationFileName = "DockVMSerialization.xml";
 
         public MainWindow()
         {
@@ -51,47 +55,75 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
             this.Closed += MainWindow_Closed;
 
             _viewModel.ProcessesWithWindows.AddBehavior(OnProcessAdded);
+
+            SaveButton.Click += SaveButton_Click;
+
+            LoadButton.Click += LoadButton_Click;
+        }
+
+        private void SaveButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            _uniDockService.SaveToFile(DockSerializationFileName);
+
+            _uniDockService.SaveViewModelsToFile(VMSerializationFileName);
+        }
+
+        private void LoadButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            _uniDockService.RestoreFromFile(DockSerializationFileName, false);
+            _uniDockService.RestoreViewModelsFromFile(VMSerializationFileName, typeof(DockItemViewModel<ProcessData>));
+
+            foreach (DockItemViewModel<ProcessData> vm in _uniDockService.DockItemsViewModels)
+            {
+                string processName = vm.TheVM.ProcessName;
+
+                Guid instanceId = vm.TheVM.InstanceId;
+
+                _viewModel.LaunchProcess(processName, instanceId);
+            }
         }
 
         private void OnProcessAdded(SingleProcessViewModel processViewModel)
         {
-            ++_newDockId;
-
-            //Dispatcher.UIThread.Post(
-            //    () =>
-            //    {
-            //        _appTabs.DockChildren.Add
-            //        (
-            //            new DockItem
-            //            {
-            //                DockId = _newDockId.ToString(),
-            //                Header = $"{processViewModel.Name}_{_newDockId}",
-            //                Content = new EmbeddedWindowBasedNativeControl { WindowHandle = processViewModel.ProcessMainWindowHandle },
-            //                IsPredefined = false,
-            //                IsSelected = true,
-            //                IsActive = true,
-            //            }
-            //         );
-            //    });
+            Guid instanceId = processViewModel.InstanceId;
 
             Dispatcher.UIThread.Post(
                 () =>
                 {
-                    _uniDockService.DockItemsViewModels.Add
-                    (
-                        new DockItemViewModelBase
+                    var existingVm = 
+                        _uniDockService
+                            .DockItemsViewModels
+                            .Cast<DockItemViewModel<ProcessData>>()
+                            .FirstOrDefault(dockItemVm => dockItemVm.TheVM.InstanceId == instanceId);
+
+                    if (existingVm != null)
+                    {
+                        existingVm.TheVM.ProcessMainWindowHandle = processViewModel.ProcessMainWindowHandle;
+                    }
+                    else
+                    {
+                        var dockItemViewModel = new DockItemViewModel<ProcessData>
                         {
                             DockId = _newDockId.ToString(),
                             Header = $"{processViewModel.ProcessName}_{_newDockId}",
                             DefaultDockGroupId = "MainProcessesTab",
                             DefaultDockOrderInGroup = _newDockId,
-                            Content = processViewModel.ProcessMainWindowHandle,
                             ContentTemplateResourceKey = "EmbeddedWindowTemplate",
+                            HeaderContentTemplateResourceKey = "EmbeddedWindowHeaderTemplate",
                             IsSelected = true,
                             IsActive = true,
-                            IsPredefined = false
-                        }
-                    );
+                            IsPredefined = false,
+                        };
+
+                        dockItemViewModel.TheVM = new ProcessData
+                        {
+                            InstanceId = processViewModel.InstanceId,
+                            ProcessName = processViewModel.ProcessName,
+                            WindowNumber = _newDockId,
+                            ProcessMainWindowHandle = processViewModel.ProcessMainWindowHandle
+                        };
+                        _uniDockService!.DockItemsViewModels.Add(dockItemViewModel);
+                    }
                 }
             );
         }

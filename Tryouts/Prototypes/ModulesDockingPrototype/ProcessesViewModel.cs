@@ -103,17 +103,40 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
         {
             Guid instanceId = Guid.NewGuid();
 
-            SingleProcessViewModel processViewModel = 
+            LaunchProcess(moduleInfo, instanceId);
+        }
+
+        public ModuleManifest? FindManifest(string processName)
+        {
+            return Modules?.FirstOrDefault(module => module.Name == processName);
+        }
+
+        public void LaunchProcess(ModuleManifest moduleInfo, Guid instanceId)
+        {
+            SingleProcessViewModel processViewModel =
                 new SingleProcessViewModel(instanceId, moduleInfo.Name, moduleInfo.UIType);
 
             Processes.Add(processViewModel);
 
             _moduleLoader.RequestStartProcess
             (
-                new LaunchRequest 
-                { 
-                    name = moduleInfo.Name, 
-                    instanceId = instanceId });
+                new LaunchRequest
+                {
+                    name = moduleInfo.Name,
+                    instanceId = instanceId
+                });
+        }
+
+        public void LaunchProcess(string processName, Guid instanceId)
+        {
+            ModuleManifest? moduleManifest = FindManifest(processName);
+
+            if (moduleManifest == null)
+            {
+                throw new Exception($"Module with Name '{processName}' is not found");
+            }
+
+            LaunchProcess(moduleManifest, instanceId);
         }
 
         private void OnStopProcess(SingleProcessViewModel process)
