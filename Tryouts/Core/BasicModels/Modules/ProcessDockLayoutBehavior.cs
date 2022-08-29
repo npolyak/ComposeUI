@@ -19,6 +19,8 @@ namespace MorganStanley.ComposeUI.Tryouts.Core.BasicModels.Modules
 
         SynchronizationContext _synchronizationContext;
 
+        IDisposable _behavior;
+
         public ProcessDockLayoutBehavior
         (
             IUniDockService uniDockService,
@@ -43,8 +45,32 @@ namespace MorganStanley.ComposeUI.Tryouts.Core.BasicModels.Modules
 #pragma warning restore CS8974 // Converting method group to non-delegate type
 
             _synchronizationContext = SynchronizationContext.Current!;
+
+            ResetBehavior();
         }
 
+        private void ResetBehavior()
+        {
+            _behavior?.Dispose();
+
+            _behavior = _uniDockService.DockItemsViewModels.AddBehavior(OnVmAdded, OnVmRemoved);
+        }
+
+        private void OnVmAdded(DockItemViewModelBase vm)
+        {
+
+        }
+
+        private void OnVmRemoved(DockItemViewModelBase vm)
+        {
+            DockItemViewModel<ProcessData> processVm = 
+                (DockItemViewModel<ProcessData>)vm;
+
+            Guid instanceId = 
+                processVm.TheVM!.InstanceId;
+
+            _processesViewModel.StopProcess(instanceId);
+        }
 
         public void Save()
         {
@@ -57,6 +83,7 @@ namespace MorganStanley.ComposeUI.Tryouts.Core.BasicModels.Modules
         {
             _uniDockService.RestoreFromFile(_dockSerializationFileName, false);
             _uniDockService.RestoreViewModelsFromFile(_vmSerializationFileName, typeof(DockItemViewModel<ProcessData>));
+            ResetBehavior();
 
             _newDockId =
                 _uniDockService
@@ -127,17 +154,20 @@ namespace MorganStanley.ComposeUI.Tryouts.Core.BasicModels.Modules
         {
             _synchronizationContext.Send((_) =>
             {
-                var dockVm = 
+                var dockVm =
                     _uniDockService
                     .DockItemsViewModels
                     .Cast<DockItemViewModel<ProcessData>>()
                     .FirstOrDefault(vm => vm.TheVM!.InstanceId == processViewModel.InstanceId);
 
-                var dockId = dockVm!.DockId;
+                if (dockVm != null)
+                {
+                    var dockId = dockVm.DockId;
 
-                var group = _uniDockService.GetGroupByDockId(dockId);
+                    var group = _uniDockService.GetGroupByDockId(dockId);
 
-                _uniDockService.DockItemsViewModels.Remove(dockVm);
+                    _uniDockService.DockItemsViewModels.Remove(dockVm);
+                }
             },
             null);
         }

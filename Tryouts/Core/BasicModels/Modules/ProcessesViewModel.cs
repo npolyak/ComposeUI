@@ -131,5 +131,13 @@ namespace MorganStanley.ComposeUI.Tryouts.Core.BasicModels.Modules
             stopRequest.instanceId = process.InstanceId;
             _moduleLoader.RequestStopProcess(stopRequest);
         }
+
+        public void StopProcess(Guid instanceId)
+        {
+            SingleProcessViewModel? singleProcessViewModel = 
+                Processes.FirstOrDefault(p => p.InstanceId == instanceId);
+
+            OnStopProcess(singleProcessViewModel);
+        }
     }
 }

@@ -12,6 +12,7 @@
 using Avalonia.Controls;
 using Avalonia.Threading;
 using MorganStanley.ComposeUI.Tryouts.Core.BasicModels.Modules;
+using NP.Avalonia.UniDock;
 using NP.Avalonia.UniDockService;
 using NP.Concepts.Behaviors;
 using System;
