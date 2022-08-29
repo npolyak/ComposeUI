@@ -65,6 +65,12 @@ namespace MorganStanley.ComposeUI.Tryouts.Core.BasicModels.Modules
         {
             process.StopEvent += OnStopProcess;
             process.StartedEvent += Process_StartedEvent;
+            process.StoppedEvent += Process_StoppedEvent;
+        }
+
+        private void Process_StoppedEvent(SingleProcessViewModel process)
+        {
+            ((IList<SingleProcessViewModel>)ProcessesWithWindows).Remove(process);
         }
 
         private void Process_StartedEvent(SingleProcessViewModel process)
@@ -74,6 +80,7 @@ namespace MorganStanley.ComposeUI.Tryouts.Core.BasicModels.Modules
 
         private void OnProcessesRemoved(SingleProcessViewModel process)
         {
+            process.StoppedEvent -= Process_StoppedEvent;
             process.StartedEvent -= Process_StartedEvent;
             process.StopEvent -= OnStopProcess;
         }

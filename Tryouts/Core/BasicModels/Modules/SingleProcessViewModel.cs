@@ -7,7 +7,9 @@ namespace MorganStanley.ComposeUI.Tryouts.Core.BasicModels.Modules
     {
         public event Action<SingleProcessViewModel>? StopEvent;
 
-        public event Action<SingleProcessViewModel> StartedEvent;
+        public event Action<SingleProcessViewModel>? StoppedEvent;
+
+        public event Action<SingleProcessViewModel>? StartedEvent;
 
         public Guid InstanceId { get; }
 
@@ -69,6 +71,10 @@ namespace MorganStanley.ComposeUI.Tryouts.Core.BasicModels.Modules
                 StartedEvent?.Invoke(this);
 
                 OnPropertyChanged(nameof(ProcessMainWindowHandle));
+            }
+            else
+            {
+                StoppedEvent?.Invoke(this);
             }
         }
 

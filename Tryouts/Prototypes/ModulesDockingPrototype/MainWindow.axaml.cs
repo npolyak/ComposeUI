@@ -31,7 +31,7 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
         private const string DockSerializationFileName = "DockSerialization.xml";
         private const string VMSerializationFileName = "DockVMSerialization.xml";
 
-        public SaveRestoreProcessDockLayoutBehavior ActionsBehavior { get; }
+        public ProcessDockLayoutBehavior ActionsBehavior { get; }
 
         public MainWindow()
         {
@@ -49,7 +49,7 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
             _viewModel = viewModel;
 
             ActionsBehavior =
-                new SaveRestoreProcessDockLayoutBehavior
+                new ProcessDockLayoutBehavior
                 (
                     _uniDockService,
                     _viewModel,
