@@ -1,14 +1,10 @@
 ﻿using MorganStanley.ComposeUI.Tryouts.Core.Abstractions.Modules;
 using MorganStanley.ComposeUI.Tryouts.Core.Utilities;
-using System;
-using System.ComponentModel;
 
-namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
+namespace MorganStanley.ComposeUI.Tryouts.Core.BasicModels.Modules
 {
     public class SingleProcessViewModel : ViewModelBase
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
         public event Action<SingleProcessViewModel>? StopEvent;
 
         public event Action<SingleProcessViewModel> StartedEvent;
@@ -34,18 +30,13 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
 
                 _isRunning = value;
 
-                OnPropChanged(nameof(IsRunning));
-                OnPropChanged(nameof(CanStop));
-                OnPropChanged(nameof(Status));
+                OnPropertyChanged(nameof(IsRunning));
+                OnPropertyChanged(nameof(Status));
+                OnPropertyChanged(nameof(CanStop));
             }
         }
 
         public string Status => IsRunning ? "Running" : "Stopped";
-
-        protected void OnPropChanged(string propName)
-        {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-        }
 
         public SingleProcessViewModel
         (
@@ -77,7 +68,7 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
 
                 StartedEvent?.Invoke(this);
 
-                OnPropChanged(nameof(ProcessMainWindowHandle));
+                OnPropertyChanged(nameof(ProcessMainWindowHandle));
             }
         }
 

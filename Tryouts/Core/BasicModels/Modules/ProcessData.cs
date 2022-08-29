@@ -2,7 +2,7 @@
 using System;
 using System.Xml.Serialization;
 
-namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
+namespace MorganStanley.ComposeUI.Tryouts.Core.BasicModels.Modules
 {
     public class ProcessData : ViewModelBase
     {

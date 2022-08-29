@@ -1,64 +1,43 @@
 ﻿using MorganStanley.ComposeUI.Tryouts.Core.Abstractions.Modules;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Reactive.Linq;
 using NP.Concepts.Behaviors;
-using System;
 
-namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
+namespace MorganStanley.ComposeUI.Tryouts.Core.BasicModels.Modules
 {
     public class ProcessesViewModel
     {
-        public ObservableCollection<ModuleViewModel> Modules { get; } =
-            new ObservableCollection<ModuleViewModel>();
+        public ModuleViewModel[] Modules { get; }
 
         IModuleLoader _moduleLoader;
 
-        public ObservableCollection<SingleProcessViewModel> Processes { get; } =
+        public IEnumerable<SingleProcessViewModel> Processes { get; } =
             new ObservableCollection<SingleProcessViewModel>();
 
 
-        public ObservableCollection<SingleProcessViewModel> ProcessesWithWindows { get; } =
+        public IEnumerable<SingleProcessViewModel> ProcessesWithWindows { get; } =
             new ObservableCollection<SingleProcessViewModel>();
 
         private IDisposable _modulesBehavior;
         private IDisposable _processesBehavior;
+        IModuleLoaderFactory _moduleLoaderFactory;
         public ProcessesViewModel
         (
-            IModuleLoaderFactory moduleLoaderFactory)
+            IModuleLoaderFactory moduleLoaderFactory,
+            ModuleViewModel[] modules)
         {
-            Modules
-                .Add
-                (
-                    new ModuleViewModel
-                    {
-                        StartupType = StartupType.Executable,
-                        UIType = UIType.Window,
-                        Name = "SimpleWpfApp",
-                        Path = @"Plugins\ApplicationPlugins\SimpleWpfApp\SimpleWpfApp.exe"
-                    }
-                );
+            _moduleLoaderFactory = moduleLoaderFactory;
 
-            Modules
-                .Add
-                (
-                    new ModuleViewModel
-                    {
-                        StartupType = StartupType.Executable,
-                        UIType = UIType.Window,
-                        Name = "AnotherWpfApp",
-                        Path = @"Plugins\ApplicationPlugins\AnotherWpfApp\AnotherWpfApp.exe"
-                    }
-                );
+            Modules = modules;
 
             _modulesBehavior = Modules.AddBehavior(OnModuleAdded, OnModuleRemoved);
 
             _processesBehavior = Processes.AddBehavior(OnProcessesAdded, OnProcessesRemoved);
 
-            ModuleCatalogue moduleCatalogue = 
-                new ModuleCatalogue(Modules.ToDictionary(m => m.Name, m => (ModuleManifest) m));
+            ModuleCatalogue moduleCatalogue =
+                new ModuleCatalogue(Modules.ToDictionary(m => m.Name, m => (ModuleManifest)m));
 
-            _moduleLoader = moduleLoaderFactory.Create(moduleCatalogue);
+            _moduleLoader = _moduleLoaderFactory.Create(moduleCatalogue);
 
             _moduleLoader.LifecycleEvents.Subscribe(OnLifecycleEventArrived);
         }
@@ -90,7 +69,7 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
 
         private void Process_StartedEvent(SingleProcessViewModel process)
         {
-            ProcessesWithWindows.Add(process);
+            ((IList<SingleProcessViewModel>)ProcessesWithWindows).Add(process);
         }
 
         private void OnProcessesRemoved(SingleProcessViewModel process)
@@ -116,7 +95,7 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
             SingleProcessViewModel processViewModel =
                 new SingleProcessViewModel(instanceId, moduleInfo.Name, moduleInfo.UIType);
 
-            Processes.Add(processViewModel);
+            ((IList<SingleProcessViewModel>)Processes).Add(processViewModel);
 
             _moduleLoader.RequestStartProcess
             (

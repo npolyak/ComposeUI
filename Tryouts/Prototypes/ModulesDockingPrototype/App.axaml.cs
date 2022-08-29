@@ -14,6 +14,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using MorganStanley.ComposeUI.Tryouts.Core.Abstractions;
 using MorganStanley.ComposeUI.Tryouts.Core.Abstractions.Modules;
+using MorganStanley.ComposeUI.Tryouts.Core.BasicModels.Modules;
 using MorganStanley.ComposeUI.Tryouts.Core.Services.ModulesService;
 using NP.Avalonia.Gidon;
 using NP.IoCy;
@@ -62,7 +63,27 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
             {
                 IModuleLoaderFactory loaderFactory = new ModuleLoaderFactory();
 
-                ProcessesViewModel viewModel = new ProcessesViewModel(loaderFactory);
+                ProcessesViewModel viewModel = new ProcessesViewModel
+                (
+                    loaderFactory,
+                    new[]
+                    {
+                        new ModuleViewModel
+                        {
+                            StartupType = StartupType.Executable,
+                            UIType = UIType.Window,
+                            Name = "SimpleWpfApp",
+                            Path = @"Plugins\ApplicationPlugins\SimpleWpfApp\SimpleWpfApp.exe"
+                        },
+                        new ModuleViewModel
+                        {
+                            StartupType = StartupType.Executable,
+                            UIType = UIType.Window,
+                            Name = "AnotherWpfApp",
+                            Path = @"Plugins\ApplicationPlugins\AnotherWpfApp\AnotherWpfApp.exe"
+                        }
+                    }
+                );
 
                 desktop.MainWindow = new MainWindow(viewModel);
 

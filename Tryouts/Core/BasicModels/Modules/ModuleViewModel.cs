@@ -1,7 +1,6 @@
 ﻿using MorganStanley.ComposeUI.Tryouts.Core.Abstractions.Modules;
-using System;
 
-namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
+namespace MorganStanley.ComposeUI.Tryouts.Core.BasicModels.Modules
 {
     public class ModuleViewModel : ModuleManifest
     {

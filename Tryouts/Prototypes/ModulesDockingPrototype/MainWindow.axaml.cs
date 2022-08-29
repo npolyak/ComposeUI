@@ -11,8 +11,7 @@
 
 using Avalonia.Controls;
 using Avalonia.Threading;
-using MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype;
-using NP.Avalonia.UniDock;
+using MorganStanley.ComposeUI.Tryouts.Core.BasicModels.Modules;
 using NP.Avalonia.UniDockService;
 using NP.Concepts.Behaviors;
 using System;
@@ -29,8 +28,6 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
 
         int _newDockId = 0;
 
-        TabbedDockGroup? _appTabs;
-
         private const string DockSerializationFileName = "DockSerialization.xml";
         private const string VMSerializationFileName = "DockVMSerialization.xml";
 
@@ -41,7 +38,6 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
         public MainWindow(ProcessesViewModel viewModel)
         {
             InitializeComponent();
-            _appTabs = this.FindControl<TabbedDockGroup>("AppTabs");
             _uniDockService = (IUniDockService)
                 this.Resources["TheDockManager"]!;
 
@@ -73,6 +69,12 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
             _uniDockService.RestoreFromFile(DockSerializationFileName, false);
             _uniDockService.RestoreViewModelsFromFile(VMSerializationFileName, typeof(DockItemViewModel<ProcessData>));
 
+            _newDockId =
+                _uniDockService
+                    .DockItemsViewModels
+                    .Cast<DockItemViewModel<ProcessData>>()
+                    .Max(dockItemVm => dockItemVm.TheVM.WindowNumber);
+
             foreach (DockItemViewModel<ProcessData> vm in _uniDockService.DockItemsViewModels)
             {
                 string processName = vm.TheVM.ProcessName;
@@ -102,6 +104,7 @@ namespace MorganStanley.ComposeUI.Prototypes.ModulesDockingPrototype
                     }
                     else
                     {
+                        _newDockId++;
                         var dockItemViewModel = new DockItemViewModel<ProcessData>
                         {
                             DockId = _newDockId.ToString(),
