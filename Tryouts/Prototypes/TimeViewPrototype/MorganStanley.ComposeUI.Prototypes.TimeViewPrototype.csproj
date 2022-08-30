@@ -44,4 +44,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
     <ProjectReference Include="..\..\Plugins\ViewViewModelPlugins\TimeViewModel\MorganStanley.ComposeUI.Tryouts.Plugins.ViewViewModelPlugins.TimeViewModel.csproj" />
     <ProjectReference Include="..\..\Visuals\Avalonia\VisualUtils\MorganStanley.ComposeUI.Tryouts.Visuals.Avalonia.VisualUtils.csproj" />
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="if not exist &quot;$(OutDir)Plugins\Services&quot; mkdir &quot;$(OutDir)Plugins\Services&quot;" />
+	  <Exec Command="if not exist &quot;$(OutDir)Plugins\ViewModelPlugins&quot; mkdir &quot;$(OutDir)Plugins\ViewModelPlugins&quot;" />
+	  <Exec Command="if not exist &quot;$(OutDir)Plugins\ViewPlugins&quot; mkdir &quot;$(OutDir)Plugins\ViewPlugins&quot;" />
+  </Target>
 </Project>
