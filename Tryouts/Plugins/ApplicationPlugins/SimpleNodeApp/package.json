@@ -1,0 +1,15 @@
+{
+  "name": "simple-node-app",
+  "version": "0.0.0",
+  "description": "SimpleNodeApp",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.6.12",
+    "@grpc/proto-loader": "^0.7.2",
+    "applicationinsights": "^2.3.4",
+    "protobufjs": "^7.1.0"
+  }
+}

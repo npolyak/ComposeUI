@@ -61,6 +61,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MorganStanley.ComposeUI.Plu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommunicationsServices", "CommunicationsServices", "{4BD5C5D2-6DB3-41F7-A33F-2FE79B885DFB}"
 EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "SimpleNodeApp", "..\..\Plugins\ApplicationPlugins\SimpleNodeApp\SimpleNodeApp.njsproj", "{F13D44C5-1392-4257-A11B-02E91DAAB12B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -119,6 +121,10 @@ Global
 		{73208774-08A2-4F82-B749-D5F6B1031B6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73208774-08A2-4F82-B749-D5F6B1031B6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73208774-08A2-4F82-B749-D5F6B1031B6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F13D44C5-1392-4257-A11B-02E91DAAB12B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F13D44C5-1392-4257-A11B-02E91DAAB12B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F13D44C5-1392-4257-A11B-02E91DAAB12B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F13D44C5-1392-4257-A11B-02E91DAAB12B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -150,6 +156,7 @@ Global
 		{3AC6923A-1375-4EAB-AD19-4B3917FC9AA7} = {4BD5C5D2-6DB3-41F7-A33F-2FE79B885DFB}
 		{73208774-08A2-4F82-B749-D5F6B1031B6F} = {D1DC0BB5-C429-4192-BF01-EF58D6B0F9AB}
 		{4BD5C5D2-6DB3-41F7-A33F-2FE79B885DFB} = {D1DC0BB5-C429-4192-BF01-EF58D6B0F9AB}
+		{F13D44C5-1392-4257-A11B-02E91DAAB12B} = {791349F6-58F6-4425-AAB1-DBD3C3B99D6B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {98497725-4038-46B9-910E-2BADC6FDC7E4}
