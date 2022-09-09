@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <title>Simple Web App</title>
+    </head>
+    <body>
+        <h1 id="TheText">Simple Web App</h1>
+        <div id="theform">
+            <input type="text" id="text" name="text">
+            <button id="SubmitButton">Submit</button>
+        </div>
+
+    </body>
+    <script src="node_modules/jquery/dist/jquery.slim.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready( // "ready" function ensures that
+                           // the functionality within executes after the DOM creation
+            function () {
+                $("#SubmitButton").click(
+                    function () {
+                        var txt = $("#text").val();
+
+                        //alert(txt);
+                    }
+                );
+            }
+        );
+    </script>
+</html>

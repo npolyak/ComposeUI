@@ -1,0 +1,10 @@
+{
+  "name": "simple-web-app",
+  "version": "0.0.0",
+  "description": "SimpleWebApp",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+  }
+}
