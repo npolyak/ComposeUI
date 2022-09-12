@@ -21,7 +21,7 @@
                 $("#SubmitButton").click(
                     function () {
                         var txt = $("#text").val();
-
+                        window.chrome.webview.postMessage('Hello .NET from JavaScript');
                         //alert(txt);
                     }
                 );

@@ -29,6 +29,6 @@ See the License for the specific language governing permissions and limitations 
 	<Grid x:Name="RootPanel"
 		  RowDefinitions="*, Auto"
 		  Margin="10">
-		<local:EmbeddedWebView Source="file:///C:/MSDE/polyanic/CSHARP/SimpleWV2App/bin/Debug/net6.0-windows/Simple.html"/>
+		<local:EmbeddedWebView Source="file:///C:/IDEAS/GITHUB/ComposeUI/Tryouts/Prototypes/WV2Prototype/bin/Debug/net6.0/Plugins/ApplicationPlugins/SimpleWebApp/MySimpleWebApp.html"/>
 	</Grid>
 </Window>

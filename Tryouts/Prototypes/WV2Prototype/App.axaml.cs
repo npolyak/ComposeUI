@@ -44,9 +44,9 @@ namespace MorganStanley.ComposeUI.Prototypes.WV2Prototype
             // inject all dynamically loaded assemblies
             _pluginManager.CompleteConfiguration();
 
-            //_server = _container.Resolve<ICommunicationService>();
+            _server = _container.Resolve<ICommunicationService>();
 
-            //_server.AddTopics((Topic.Test, typeof(TestTopicMessage)));
+            _server.AddTopics((Topic.Test, typeof(TestTopicMessage)));
         }
 
         public override void Initialize()
@@ -70,13 +70,13 @@ namespace MorganStanley.ComposeUI.Prototypes.WV2Prototype
 
         private void OnMainWindowClosed(object? sender, System.EventArgs e)
         {
-            //_server.ShutdownAsync().Wait();
+            _server.ShutdownAsync().Wait();
         }
 
         private void OnDesktopStartup(object? sender, ControlledApplicationLifetimeStartupEventArgs e)
         {
-            //_server.SetHostAndPort(CommunicationsConstants.MachineName, CommunicationsConstants.Port);
-            //_server.Start();
+            _server.SetHostAndPort(CommunicationsConstants.MachineName, CommunicationsConstants.Port);
+            _server.Start();
         }
     }
 }

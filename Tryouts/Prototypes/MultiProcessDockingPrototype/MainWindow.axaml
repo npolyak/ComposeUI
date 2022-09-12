@@ -39,9 +39,9 @@ See the License for the specific language governing permissions and limitations 
 						<ms:EmbeddedNativeControl ProcessExePath="Plugins/ApplicationPlugins/AnotherWpfApp/AnotherWpfApp.exe"/>
 					</np:DockItem>
 				</np:StackDockGroup>
-				<np:DockItem Header="Notepad++">
+				<!--<np:DockItem Header="Notepad++">
 					<ms:EmbeddedNativeControl ProcessExePath="C:\Program Files\Notepad++\notepad++.exe"/>
-				</np:DockItem>
+				</np:DockItem>-->
 			</np:StackDockGroup>
 		</np:RootDockGroup>
 	</Grid>

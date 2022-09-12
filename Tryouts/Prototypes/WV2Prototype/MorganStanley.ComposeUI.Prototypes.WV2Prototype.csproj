@@ -23,7 +23,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-		<BaseOutputPath>bin\Debug\net6.0</BaseOutputPath>
+		<OutputPath>bin\Debug\net6.0</OutputPath>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Remove=".gitignore" />
